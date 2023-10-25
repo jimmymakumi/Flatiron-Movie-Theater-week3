@@ -1,0 +1,10 @@
+html{
+	background-color: rgb(119, 43, 226);
+}
+.film {
+	list-style-type: none;
+	cursor: pointer;
+  }
+  .sold-out {
+	color: red;
+  }
