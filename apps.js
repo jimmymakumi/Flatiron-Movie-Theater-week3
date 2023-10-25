@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function (){
 
     const placeMovie = () => {
-        fetch("http://localhost:3000/films")
+        fetch("https://my-json-server.typicode.com/jimmymakumi/Flatiron-Movie-Theater-week3/films")
         .then(res => res.json())
         .then(data =>{
            console.log(data)
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function (){
 
     }
 function showMovieDetails(){
-    fetch('http://localhost:3000/films')
+    fetch('https://my-json-server.typicode.com/Njooro/Week3.CodeChallenge/films')
     .then(data => data.json())
     .then(response =>{
         filmData = [...response];
@@ -70,31 +70,11 @@ function showMovieDetails(){
                 showTime.innerText =`Showtime: ${item.showtime}`
                 availableTickets.innerText =`Tickets available: (${item.capacity - item.tickets_sold})`
                 const ticketsBuy = document.getElementById("buyTicket")
-                // In your placeMovie function, change the IDs like this:
-const availTicket = document.getElementById("ticketsAvailable");
-
-
-movieList.addEventListener('click', () => {
-
-    const movieNameDisplay = document.getElementById("movieTitle");
-    
-
-    ticketsBuy.addEventListener('click', () => {
-        ticket--;
-
-        if (ticket <= 0) {
-            movieNameDisplay.innerHTML = `${item.title} <span class="badge bg-danger">SOLD OUT</span>`;
-            availableTickets.innerHTML = `Tickets available: <span class="badge bg-danger">SOLD OUT</span>`;
-        } else {
-            availableTickets.innerText = `Tickets available: (${ticket})`;
-        }
-    });
-});
                 let ticket = Number(item.capacity - item.tickets_sold);
                 ticketsBuy.addEventListener('click',()=>{
                     
                     ticket --
-                    if(ticket <= 3){
+                    if(ticket <= 0){
                         movieList.innerHTML =`${item.title} <span class="badge bg-danger">SOLD OUT</span>`
                         availableTickets.innerHTML = `Tickets available: <span class="badge bg-danger">SOLD OUT</span>`
                     }else{
